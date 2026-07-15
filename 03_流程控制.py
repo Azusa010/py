@@ -159,15 +159,71 @@ from random import randint
 
 
 # 嵌套分支
-state = 0b000
-if state & 0b111 == 0b111:
-    print('大写状态')
-else:
-    if state & 0b010 == 0b010:
-        if state & 0b001 == 0b001:
-            print('简体中文-微软拼音')
-        else:
-            print('英文模式')
-    else:
-        print('英语美式键盘')
-    
+# state = 0b000
+# if state & 0b111 == 0b111:
+#     print('大写状态')
+# else:
+#     if state & 0b010 == 0b010:
+#         if state & 0b001 == 0b001:
+#             print('简体中文-微软拼音')
+#         else:
+#             print('英文模式')
+#     else:
+#         print('英语美式键盘')
+
+
+# match分支
+# month = randint(1, 20)
+# match month:
+#     case 1 | 3 | 5 | 7 | 8 | 10 | 12:
+#         print(f"{month}有31天")
+#     case 4 | 6 | 9 | 11:
+#         print(f"{month}有30天")
+#     case 2:
+#         print(f"{month}有28天")
+#     case _:
+#         print("输入月份不合理")
+
+
+# 三目运算符
+# num1=10
+# num2=20
+# max = num1 if num1>num2 else num2
+
+
+# while循环
+# week = 1
+# rabbits = 2
+# while week<10:
+#     rabbits= rabbits+rabbits*2
+#     week+=1
+# print(f'第{week}周有{rabbits}只兔子')
+
+# import time
+
+# num = 1
+# while num < 100:
+#     print("=" * num,end='\r')
+#     num += 1
+#     time.sleep(0.05)
+
+# for i in [2,3,4,5,6,7,8,9,0]:
+#     print(i,end=' ')
+
+# for i in 'string':
+#     print(i)
+
+# for i in range(10):
+#     print(f'第{i+1}')
+
+# for i in range(1, 10):
+#     for j in range(1, i + 1):
+#         print(f"{i}*{j}={i * j}", end="\t")
+#     print()
+
+count = 0
+for i in range(10):
+    count = count + i**i
+    print(count)
+    if count > 1_000_0000:
+        break
