@@ -120,22 +120,22 @@ list1 = [10, "hello", 20.5, True, 100]
 # print(new_str)
 
 
-#6）给定一个字符串 sentence = "Hello, World!"，编写一个程序，将字符串中的所有小写字母转换为大写字母，并输出结果。
+# 6）给定一个字符串 sentence = "Hello, World!"，编写一个程序，将字符串中的所有小写字母转换为大写字母，并输出结果。
 # sentence = "Hello, World!"
 # print(sentence.upper())
 
-#7）给定一个字符串 text = "Python is fun and powerful."，统计字符串中字母 n 出现的次数。
+# 7）给定一个字符串 text = "Python is fun and powerful."，统计字符串中字母 n 出现的次数。
 # text = "Python is fun and powerful."
 # print(text.count('n'))
 
-#8）给定一个字符串 str1 = "apple,banana,cherry,date"，将该字符串按照 , 分隔，存储在一个列表中，并将列表中的元素首字母大写，最后将修改后的列表元素用 - 连接成一个新的字符串。
+# 8）给定一个字符串 str1 = "apple,banana,cherry,date"，将该字符串按照 , 分隔，存储在一个列表中，并将列表中的元素首字母大写，最后将修改后的列表元素用 - 连接成一个新的字符串。
 # str1 = "apple,banana,cherry,date"
 # str2 = '-'.join(str1.capitalize().split(','))
 # print(str2)
 
 # tuple2=(1,2,3)
 # for i,item in enumerate(tuple2):
-#     print(i,item) 
+#     print(i,item)
 
 # fruits = ("apple", "banana", "cherry", "date", "elderberry")
 
@@ -148,3 +148,45 @@ list1 = [10, "hello", 20.5, True, 100]
 # print(longest)
 
 
+# set1 = set() #set()
+# set1 = {1,2,3}
+# set1 = set([1,2,3,2,3]) #{1, 2, 3}
+# set1.add(9)
+# set1.remove(1)
+# print(sum(set1))
+# set1 = set(i for i in range(5))
+# for item in set1:
+#     print(item)
+
+# set1 = {1, 2, 3}
+# set2 = {3, 4, 5}
+# # print(set1.isdisjoint(set2))
+# # print(set1.issubset(set2))
+# print(set1.update(set2))
+# print(set1)
+
+# set1 = {1, 2, 3, 4, 5}
+# set2 = {4, 5, 6, 7, 8}
+# jiaoji = set1 & set2
+# bingji = set1 | set2
+# chaji = set1 - set2
+# print(f'交集{jiaoji} 并集{bingji} 差集{chaji}')
+
+# original_set = {1, 2, 3, 4, 5}
+# original_set.update([6,7])
+# original_set.remove(3)
+# print(original_set)
+
+
+# dict1 = {"key1": "value1", "key2": "value2"}
+# dict2 = dict(name='zs',age=18)
+# dict1= {i:i*2 for i in range(3)}
+# print(dict1)
+
+dict1={'name': 'alice','age':18,'gender':'female'}
+keys = dict1.keys() #所有的key
+values = dict1.values() #所有的value
+items = dict1.items() #所有k-v
+
+for k,v in items:
+    print(k,v)
