@@ -183,10 +183,29 @@ list1 = [10, "hello", 20.5, True, 100]
 # dict1= {i:i*2 for i in range(3)}
 # print(dict1)
 
-dict1={'name': 'alice','age':18,'gender':'female'}
-keys = dict1.keys() #所有的key
-values = dict1.values() #所有的value
-items = dict1.items() #所有k-v
+# dict1={'name': 'alice','age':18,'gender':'female'}
+# keys = dict1.keys() #所有的key
+# values = dict1.values() #所有的value
+# items = dict1.items() #所有k-v
 
-for k,v in items:
-    print(k,v)
+# for k,v in items:
+#     print(k,v)
+    
+# student_scores = {"Alice": 85, "Bob": 92, "Charlie": 78, "David": 88}
+
+# updated_scores = {}
+
+# for k,v in student_scores.items():
+#     updated_scores[k] = v+5
+# print(updated_scores)
+
+# fruit_prices = {"apple": 1.2, "banana": 0.5, "cherry": 2.5, "date": 3.0}
+
+# max_price = 0
+# max_fruit = ''
+
+# for k,v in fruit_prices.items():
+#     if max_price < v:
+#         max_fruit = k
+#         max_price = v
+# print(max_fruit,max_price)
