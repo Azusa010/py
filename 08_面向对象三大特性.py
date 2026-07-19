@@ -150,33 +150,98 @@
 
 
 # 多态
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-    def eat(self):
-        print(f'{self.age}岁的{self.name}去吃饭')
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#     def eat(self):
+#         print(f'{self.age}岁的{self.name}去吃饭')
 
-class Teacher(Person):
-    pass
+# class Teacher(Person):
+#     pass
 
 
-class Student(Person):
-    pass
+# class Student(Person):
+#     pass
 
-def  eating(Person):
-    Person.eat()
+# def  eating(Person):
+#     Person.eat()
 
-# zs = Teacher('zs',20)
-# ls = Student('ls',18)
-# eating(zs)
-# eating(ls)
+# # zs = Teacher('zs',20)
+# # ls = Student('ls',18)
+# # eating(zs)
+# # eating(ls)
 
-def new_obj(num):
-    if num==1:
-        obj = Teacher('zs',20)
-    else:
-        obj = Student('ls',20)
-    return obj
-obj=new_obj(1)
-print(obj.name)
+# def new_obj(num):
+#     if num==1:
+#         obj = Teacher('zs',20)
+#     else:
+#         obj = Student('ls',20)
+#     return obj
+# obj=new_obj(1)
+# print(obj.name)
+
+
+# class Person:
+#     pass
+
+
+# Person.hobby = "reading"
+# print(Person.hobby)
+# from types import MethodType
+
+# class Circle:
+#     def __init__(self,radius):
+#         self.radius = radius
+
+
+# def calculate_area(self):
+#     return 3.14*self.radius**2
+
+# c = Circle(5)
+# c.calculate = MethodType(calculate_area,c)
+# print(c.calculate())
+
+
+# class BankAccount:
+#     def __init__(self,balance=0):
+#         self.__balance = balance
+#     @property
+#     def balance(self):
+#         return self.__balance
+#     @balance.setter
+#     def balance(self,m):
+#         self.__balance +=m 
+    
+#     def withdraw(self,m):
+#         if self.__balance > m:
+#             self.__balance -= m
+#         else:
+#             print('余额不足')
+
+# b = BankAccount(0)
+# print(b.balance)
+# b.balance = 19
+# b.withdraw(20)
+
+
+# class Shape:
+#     def area(self):
+#         pass
+# class Rectangle(Shape):
+#     def __init__(self,h,w):
+#         self.h = h
+#         self.w = w
+#     def area(self):
+#         return self.h * self.w
+# class Circle(Shape):
+#     def __init__(self,r):
+#         self.r = r
+#     def area(self):
+#         return 3.14 * self.r**2
+
+# r= Rectangle(2,2)
+# c = Circle(5)
+# l1 = [r,c]
+# for item in l1:
+#     print(item.area())
