@@ -93,6 +93,16 @@
 # print(reverseNum(num))
 
 
+# def rev(num):
+#     s = str(num)
+#     if num < 0:
+#         res = -int(s[1:][::-1])
+#     elif num==0:
+#         res = 0
+#     else:
+#         res = int(s[1:][::-1])
+#     return res
+# print(rev(-12))
 # students = {
 #     "Alice": {"Math": 85, "English": 90, "Science": 78},
 #     "Bob": {"Math": 92, "English": 88, "Science": 95},
@@ -100,9 +110,30 @@
 # }
 
 
-# def avg(*args):
-#     return (sum(args) / len(args)) if args else 0
+# def avg(arg):
+#     return sum(arg)/len(arg)
+
+# res = {}
+# for k,v in students.items():
+#     res[k] = round(avg(v.values()),2)
+
+# print(res)
+import types
 
 
-# for key,value in students.items():
-#     print(f"{key}的平均成绩为: {avg(*value.values())}")
+
+# def eat(self):
+#     print('eating')
+# p = Person('zs')
+# p.eat = types.MethodType(eat,p)
+# p.eat()
+class Person:
+    __slots__ = ('name','age','drink')
+    home = 'earth'
+
+    def __init__(self,name):
+        self.name = name
+
+p1 = Person('zs')
+p1.age=19
+print(p1.age)
