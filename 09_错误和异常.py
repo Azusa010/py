@@ -52,8 +52,37 @@
 #     m2()
 
 
+# try:
+#     with open("test.txt", "w") as f:
+#         f.write('str1')
+# finally:
+#     print(f.closed)
+
+
+# try:
+#     int('abc123')
+# except ValueError as e:
+#     with open('error.log','a') as f:
+#         f.write(str(e))
+
+class InvalidAgeError(Exception):
+    def __init__(self, msg):
+        self.msg = msg
+    def __str__(self):
+        return super().__str__()
+        
+class UnrealisticAgeError(Exception):
+    def __init__(self, msg):
+        self.msg = msg
+    def __str__(self):
+        return super().__str__()
+def check_age(age):
+    if age<0:
+        raise InvalidAgeError('小于0')
+    elif age>120:
+        raise UnrealisticAgeError('不真实的年龄')
+    
 try:
-    with open("test.txt", "w") as f:
-        f.write(str1)
-finally:
-    print(f.closed)
+    check_age(122)
+except Exception as e:
+    print(e)
