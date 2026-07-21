@@ -249,4 +249,147 @@ print(cells[1].cell_contents)  #2
 
 普通函数的`__closure__`一般为`None`
 
+## 装饰器
+
+装饰器允许在不修改原有函数的基础上，动态的添加或修改函数的功能
+
+本质上是一个接收函数作为输入并且返回一个新的函数的对象
+
+```py
+from math import sqrt
+
+def func(x):
+    return sqrt(x)
+
+
+def decorator(func):
+    def inner(x):
+        x = abs(x)
+        return func(x)
+
+    return inner
+
+inn = decorator(func)
+print(inn(-4))
+```
+
+### 装饰器和普通函数的区别
+
+装饰器返回的是函数,普通函数直接返回结果
+
+装饰器更符合Python装饰器模式,可以方便的复用和组合
+
+
+
+### 装饰器语法糖
+
+在函数前使用`@decorator`( decorator要和定义的装饰器名字相同 )
+
+Python会将func作为参数传递给decorator,然后将返回的inner函数替换掉原来的func
+
+```py
+from math import sqrt
+
+
+def decorator(func):
+    def inner(x):
+        x = abs(x)
+        return func(x)
+
+    return inner
+
+@decorator
+def func(x):
+    return sqrt(x)
+
+
+print(func(-4))
+```
+
+### 多层装饰器
+
+多层装饰器的装饰过程，离函数最近的装饰器先装饰，然后外面的装饰器再进行装饰 
+
+先装饰，后执行
+
+想要哪个装饰器先执行，就离函数远一点
+
+```py
+def get_abs(func):
+    def inner(x):
+        x = abs(x)
+        return func(x)
+    return inner
+
+def get_int(func):
+    def inner(x):
+        x = int(x)
+        return func(x)
+    return inner
+
+@get_int
+@get_abs
+def func(x):
+    return sqrt(x)
+
+
+print(func("-4"))
+```
+
+### 带参数的装饰器
+
+```py
+from math import sqrt
+
+def times(n):
+    def get_absolute(f):
+        def inner(x):
+            x=abs(x)
+            for i in range(n):
+                x = f(x)
+            return x
+        return inner
+    return get_absolute
+
+@times(2)
+def func(x):
+    return sqrt(x)
+
+print(func(-16))
+```
+
+
+
+### 类装饰器
+
+类装饰器是包含`__call__()`方法的类，他接受函数作为参数，并返回新的函数
+
+
+
+如果有`__call__()`可以通过 类的`实例()`直接调用
+
+```py
+d = DecoratorClass(func)
+print(d(-4))
+```
+
+```python
+from math import sqrt
+
+class DecortatorClass:
+    def __init__(self,func):
+        self.func = func
+        
+    def __call__(self, x):
+        x = abs(x)
+        return self.func(x)
+
+@DecortatorClass
+def func(x):
+    return sqrt(x)
+
+
+print(func(-4))
+```
+
 

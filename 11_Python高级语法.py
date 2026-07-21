@@ -105,8 +105,8 @@
 #                 char_value = chr(ord(char_value)+1)
 #             case _:
 #                 task_id= yield
-                
-                
+
+
 # g=gen()
 # print(next(g))
 # print(g.send(0))
@@ -115,12 +115,80 @@
 # print(g.send(1))
 
 
-def outer(a,b):
-    def inner(x):
-        return a * x+b
-    return inner
+# def outer(a,b):
+#     def inner(x):
+#         return a * x+b
+#     return inner
 
-outer = outer(1,2)
-cells = outer.__closure__
-print(cells[0].cell_contents)
-print(cells[1].cell_contents)
+# outer = outer(1,2)
+# cells = outer.__closure__
+# print(cells[0].cell_contents)
+# print(cells[1].cell_contents)
+
+# def decorator(func):
+#     def inner(x):
+#         x = abs(x)
+#         return func(x)
+
+#     return inner
+
+# from math import sqrt
+
+
+# def get_abs(func):
+#     def inner(x):
+#         x = abs(x)
+#         return func(x)
+#     return inner
+
+# def get_int(func):
+#     def inner(x):
+#         x = int(x)
+#         return func(x)
+#     return inner
+
+
+# @get_int
+# @get_abs
+# def func(x):
+#     return sqrt(x)
+
+
+# print(func("-4"))
+
+
+# from math import sqrt
+
+# def times(n):
+#     def get_absolute(f):
+#         def inner(x):
+#             x=abs(x)
+#             for i in range(n):
+#                 x = f(x)
+#             return x
+#         return inner
+#     return get_absolute
+
+# @times(2)
+# def func(x):
+#     return sqrt(x)
+
+# print(func(-16))
+
+
+from math import sqrt
+
+class DecortatorClass:
+    def __init__(self,func):
+        self.func = func
+        
+    def __call__(self, x):
+        x = abs(x)
+        return self.func(x)
+
+@DecortatorClass
+def func(x):
+    return sqrt(x)
+
+
+print(func(-4))
