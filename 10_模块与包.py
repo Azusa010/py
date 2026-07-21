@@ -24,5 +24,8 @@
 #     test()
 # print(dir())
 
-import graphic
-print(graphic.circle.PI)
+# import graphic
+# print(graphic.circle.PI)
+
+from graphic import circle
+print(circle.PI)
