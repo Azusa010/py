@@ -123,7 +123,7 @@ print(next(it)) #StopIteration
 
 ### 创建迭代器对象
 
-重写`__iter__`和`__next__`方法
+实现`__iter__`和`__next__`方法
 
 ```py
 class Reverse:

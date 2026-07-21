@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='graphic',
+    name='vehicle',
     version ='1.0',
-    py_modules=["graphic.circle","graphic.rectangle"]
+    py_modules=["vehicle.car"]
 )

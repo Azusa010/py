@@ -50,25 +50,27 @@
 # print(next(it))
 # print(next(it))
 # print(next(it))
-from collections.abc import Iterator
+# from collections.abc import Iterator
 
 
-class Reverse:
-    def __init__(self, data):
-        self.data = data
-        self.index = len(data)
+# class Reverse:
+#     def __init__(self, data):
+#         self.data = data
+#         self.index = len(data)
 
-    def __iter__(self):
-        return self
+#     def __iter__(self):
+#         return self
 
-    def __next__(self):
-        if self.index == 0:
-            raise StopIteration
-        self.index = self.index - 1
-        return self.data[self.index]
+#     def __next__(self):
+#         if self.index == 0:
+#             raise StopIteration
+#         self.index = self.index - 1
+#         return self.data[self.index]
 
 
-l1 = [1, 2, 3]
-it = Reverse(l1)
-print(isinstance(l1, Iterator))
-print(isinstance(it, Iterator))
+# l1 = [1, 2, 3]
+# it = Reverse(l1)
+# print(isinstance(l1, Iterator))
+# print(isinstance(it, Iterator))
+
+
