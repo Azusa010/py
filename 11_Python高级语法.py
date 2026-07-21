@@ -74,3 +74,53 @@
 # print(isinstance(it, Iterator))
 
 
+# gen = (i for i in range(10))
+# print(type(gen))
+
+
+# def fibo():
+#     a,b,count=0,1,0
+#     while count<10:
+#         yield b
+#         a,b,count=b,a+b,count+1
+#     return "abcd"
+# f=fibo()
+# try:
+#     while True:
+#         print(next(f))
+# except StopIteration as e:
+#     print(e)
+
+# def gen():
+#     task_id=0
+#     int_value=0
+#     char_value='A'
+#     while True:
+#         match task_id:
+#             case 0:
+#                 task_id = yield int_value
+#                 int_value += 1
+#             case 1:
+#                 task_id = yield char_value
+#                 char_value = chr(ord(char_value)+1)
+#             case _:
+#                 task_id= yield
+                
+                
+# g=gen()
+# print(next(g))
+# print(g.send(0))
+# print(g.send(0))
+# print(g.send(1))
+# print(g.send(1))
+
+
+def outer(a,b):
+    def inner(x):
+        return a * x+b
+    return inner
+
+outer = outer(1,2)
+cells = outer.__closure__
+print(cells[0].cell_contents)
+print(cells[1].cell_contents)

@@ -21,7 +21,6 @@ list1 = [1,2,3]
 # list2 = list1[:]
 # list2 = list1.copy()
 list2 = list(list1)
-
 ```
 
 ### 深拷贝
@@ -39,8 +38,6 @@ list2 = copy.deepcopy(list1)
 - 非容器类型(如数字、字符串、和其他"原子"类型对象)无法拷贝
 
 - 元组变量如果只包含原子类型对象，则不能对其深拷贝
-
-
 
 ## 迭代器
 
@@ -71,7 +68,7 @@ for element in (1,2,3):  #元组可迭代
 
 for key in {"one":1,"tow":2}: #字典可迭代
     print(key)
-    
+
 for char in "123": #字符串可迭代
     print(char)
 
@@ -105,8 +102,6 @@ print(isinstance((i for i in range(2)),Iterator)) #True
 
 `next()`获得可迭代对象的下一个元素
 
-
-
 使用`iter()获得一个可迭代对象的迭代器`
 
 ```py
@@ -119,8 +114,6 @@ print(next(it)) #3
 print(next(it)) #StopIteration
 ```
 
-
-
 ### 创建迭代器对象
 
 实现`__iter__`和`__next__`方法
@@ -130,7 +123,7 @@ class Reverse:
     def __init__(self,data):
         self.data = data
         self.index = len(data)
-        
+
     def __iter__(self):
         return self
     def __next__(self):
@@ -146,5 +139,114 @@ it = Reverse(l1)
 print(isinstance(l1, Iterator)) #False
 print(isinstance(it, Iterator)) #True
 ```
+
+## 生成器
+
+### 什么是生成器
+
+是一个**用于创建迭代器**的简单而强大的工具
+
+生成器可以按需生成值,避免一次性生成大量数据并占用大量内存
+
+生成器可以与其他迭代工具( 如for )配合使用
+
+### 创建生成器
+
+1. 使用推导式创建生成器
+
+```py
+gen = (i for i in range(10))
+print(type(gen)) #<class 'generator'>
+```
+
+2. 通过类似标准函数的形式创建生成器
+- 通过`yield`进行值的返回
+
+```py
+def fibo():
+    a,b,count=0,1,0
+    while count<10:
+        yield b
+        a,b,count=b,a+b,count+1
+    return "abcd" #返回异常的描述信息
+f=fibo()
+try:
+    while True:
+        print(next(f))
+except StopIteration as e:
+    print(e)
+```
+
+### send( )
+
+1. 向生成器发送值
+
+2. send函数发送的函数会作为yield表达式的返回值，赋值给task_id
+
+3. **生成器刚创建时，处于“未启动（还未执行到第一个 `yield`）”状态，此时只能用 `None` 启动，不能直接发送非空值。**用`g.send(None)或next(g)`
+
+```py
+def gen():
+    task_id=0
+    int_value=0
+    char_value='A'
+    while True:
+        match task_id:
+            case 0:
+                task_id = yield int_value
+                int_value += 1
+            case 1:
+                task_id = yield char_value
+                char_value = chr(ord(char_value)+1)
+            case _:
+                yield
+```
+
+```py
+g=gen()
+print(next(g)) 
+print(g.send(0))
+print(g.send(0))
+print(g.send(1))
+print(g.send(1))
+```
+
+## 命名空间
+
+是从名称到对象的映射,大多数命名空间使用Python字典实现
+
+各个命名空间是独立的，没有任何关系，一个命名空间中不能有重名
+
+
+
+一般有三种不同的命名空间,在不同时刻创建,并且有不同的生命周期
+
+### (1)内置命名
+
+内置命名的命名空间是在Python解释器启动时创建的，永远不会被删除
+
+### (2)一个模块的全局名称
+
+### (3)一个函数调用中的局部名称
+
+
+
+## 闭包
+
+```py
+def outer(a,b):
+    def inner(x):
+        return a * x+b
+    return inner
+
+outer = outer(1,2)
+cells = outer.__closure__
+print(cells[0].cell_contents)  #1
+print(cells[1].cell_contents)  #2
+```
+
+所有函数对象都有一个`__closure__`属性，如果他是一个闭包函数，则该属性返回单元格对象元组，每个单元格对象都对应着闭包所引用的外部函数作用域中的一个变量
+
+普通函数的`__closure__`一般为`None`
 
 
