@@ -144,26 +144,64 @@
 # with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
 
 
-import time
+# import time
+# import threading
+
+
+# def sale_ticket():
+#     global ticket_num
+#     while True:
+#         lock.acquire()
+#         if ticket_num <= 0:
+#             lock.release()
+#             break
+#         time.sleep(0.01)
+#         ticket_num -= 1    
+#         print(f"当前{threading.current_thread().name}卖了一张票", f'还剩{ticket_num}')
+#         lock.release()
+
+
+# if __name__ == "__main__":
+#     ticket_num = 100
+#     lock = threading.Lock()
+#     Threads = [threading.Thread(target=sale_ticket, name="窗口" + str(i)) for i in range(1, 4)]
+#     [t.start() for t in Threads]
+#     [t.join() for t in Threads]
+
+
+# import multiprocessing
+
+# def print_numbers1():
+#     for i in range(1, 6):
+#         print(f"进程1: {i}")
+# def print_numbers2():
+#     for i in range(6, 11):
+#         print(f"进程2: {i}")
+
+        
+        
+# if __name__ == '__main__':
+#     p1 = multiprocessing.Process(target=print_numbers1)
+#     p2 = multiprocessing.Process(target=print_numbers2)
+#     p1.start()
+#     p2.start()
+#     p1.join()
+#     p2.join()
+
 import threading
 
+def printHello():
+    for i in range(10):
+        print('线程1：Hello')
 
-def sale_ticket():
-    global ticket_num
-    while True:
-        lock.acquire()
-        if ticket_num <= 0:
-            lock.release()
-            break
-        time.sleep(0.01)
-        ticket_num -= 1    
-        print(f"当前{threading.current_thread().name}卖了一张票", f'还剩{ticket_num}')
-        lock.release()
-
+def printWorld():
+    for i in range(10):
+        print("线程2: World")
 
 if __name__ == "__main__":
-    ticket_num = 100
-    lock = threading.Lock()
-    Threads = [threading.Thread(target=sale_ticket, name="窗口" + str(i)) for i in range(1, 4)]
-    [t.start() for t in Threads]
-    [t.join() for t in Threads]
+    t1 = threading.Thread(target=printHello)
+    t2 = threading.Thread(target=printWorld)
+    t1.start()
+    t1.join()
+    t2.start()
+    t2.join()
